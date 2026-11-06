@@ -59,10 +59,10 @@ void showErrorDialog(BuildContext context, String errorMessage) {
                 style: AppTextStyle.bodyMd(
                   color:
                       (errorMessage.toLowerCase().contains("unexpected token"))
-                          ? AppColors.blueShade2.withOpacity(0.8)
+                          ? AppColors.blueShade2.withValues(alpha: 0.8)
                           : (errorMessage.toLowerCase().contains("timeout"))
-                          ? AppColors.blueShade2.withOpacity(0.8)
-                          : AppColors.redShade2.withOpacity(0.7),
+                          ? AppColors.blueShade2.withValues(alpha: 0.8)
+                          : AppColors.redShade2.withValues(alpha: 0.7),
                 ),
                 overflow: TextOverflow.fade,
               ),

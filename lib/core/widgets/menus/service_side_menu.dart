@@ -45,6 +45,7 @@ void serviceCardSideMenu(
       ),
     ],
   ).then((value) {
+    if (!context.mounted) return;
     if (value == 0) {
       context.pushNamed(AppRouteConfig.updateService, extra: serviceEntity);
     } else if (value == 1) {

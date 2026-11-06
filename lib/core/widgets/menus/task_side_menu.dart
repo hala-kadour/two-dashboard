@@ -34,6 +34,7 @@ void showTaskCardSideMenu(
       ),
     ],
   ).then((value) {
+    if (!context.mounted) return;
     confirmDeletionDialog(
       context,
       "this task",

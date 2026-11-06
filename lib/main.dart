@@ -12,7 +12,7 @@ import 'package:two_dashboard/features/projects%20&%20team%20&%20status%20&%20me
 import 'package:two_dashboard/features/roles/data/datasources/role_local_datasource.dart';
 import 'package:two_dashboard/features/roles/data/models/role_response_model.dart';
 import 'package:two_dashboard/features/services/presentation/bloc/service_bloc.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:two_dashboard/features/sprints%20&%20tasks/domain/entity/project_sprint.dart';
 import 'package:two_dashboard/features/sprints%20&%20tasks/presentation/bloc/sprint_and_task_bloc.dart';
 import 'config/theme/theme_cubit.dart';

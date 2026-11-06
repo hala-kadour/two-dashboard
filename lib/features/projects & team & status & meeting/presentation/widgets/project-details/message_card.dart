@@ -12,7 +12,7 @@ class MessageCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 10,
-      shadowColor: AppColors.fontLightGray.withOpacity(0.4),
+      shadowColor: AppColors.fontLightGray.withValues(alpha: 0.4),
       color: AppColors.cardColor,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -24,7 +24,7 @@ class MessageCard extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
-                    color: AppColors.blueShade2.withOpacity(0.3),
+                    color: AppColors.blueShade2.withValues(alpha: 0.3),
                     shape: BoxShape.circle,
                   ),
                   child: Text(

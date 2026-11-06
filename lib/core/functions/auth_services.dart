@@ -49,7 +49,9 @@ class AuthService {
 
       if (response.statusCode == 200) {
       } else {}
-    } catch (e) {}
+    } catch (e) {
+      // Ignore sign-in failures; handled by the caller.
+    }
   }
 
   // GitHub Sign-In
@@ -64,7 +66,9 @@ class AuthService {
 
       if (response.statusCode == 200) {
       } else {}
-    } catch (e) {}
+    } catch (e) {
+      // Ignore sign-in failures; handled by the caller.
+    }
   }
 
   // Sign Out (Clears Tokens)

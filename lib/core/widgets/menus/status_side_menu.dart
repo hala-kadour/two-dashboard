@@ -36,6 +36,7 @@ void showStatusSideMenu(
       ),
     ],
   ).then((value) {
+    if (!context.mounted) return;
     if (value == 0) {
       confirmDeletionDialog(context, "this status", () {
         context.read<ProjectStatusTeamMeetingBloc>().add(

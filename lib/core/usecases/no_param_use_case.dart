@@ -1,3 +1,3 @@
-abstract class NoParamUseCase<Type> {
-  Type call();
+abstract class NoParamUseCase<Result> {
+  Result call();
 }

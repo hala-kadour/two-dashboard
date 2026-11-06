@@ -8,7 +8,7 @@ part of 'role_response_model.dart';
 
 class RoleModelAdapter extends TypeAdapter<RoleModel> {
   @override
-  final int typeId = 1;
+  final typeId = 1;
 
   @override
   RoleModel read(BinaryReader reader) {
@@ -16,10 +16,7 @@ class RoleModelAdapter extends TypeAdapter<RoleModel> {
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return RoleModel(
-      id: fields[0] as int,
-      role: fields[1] as String,
-    );
+    return RoleModel(id: (fields[0] as num).toInt(), role: fields[1] as String);
   }
 
   @override

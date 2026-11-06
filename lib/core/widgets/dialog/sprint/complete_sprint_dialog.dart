@@ -68,7 +68,7 @@ void showCompleteSprintDialog(
                 if (selectedAction != null ||
                     sprint.incompleteTasksCount == 0) {
                   final actionData = selectedAction ?? {'action': 'auto'};
-                  print(actionData);
+                  debugPrint(actionData.toString());
                   // بناء الحدث حسب البيانات المختارة
                   context.read<SprintAndTaskBloc>().add(
                     CompleteSprintEvent(

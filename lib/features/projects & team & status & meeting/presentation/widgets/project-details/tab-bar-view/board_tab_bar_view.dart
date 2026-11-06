@@ -32,8 +32,7 @@ class _BoardTabBarViewState extends State<BoardTabBarView> {
                 final isSelected = value.contains(sprint.id);
                 return ListTile(
                   dense: true,
-                  leading: Radio<bool>(
-                    value: true,
+                  leading: RadioGroup<bool>(
                     groupValue: isSelected,
                     onChanged: (val) {
                       if (isSelected) {
@@ -45,9 +44,9 @@ class _BoardTabBarViewState extends State<BoardTabBarView> {
                         // إضافة sprint جديد
                         selectedSprintIds.value = [...value, sprint.id];
                       }
-                      print("*****************");
-                      print(selectedSprintIds.value);
-                      print("*****************");
+                      debugPrint("*****************");
+                      debugPrint(selectedSprintIds.value.toString());
+                      debugPrint("*****************");
                       // تحديث البورد
                       context.read<ProjectStatusTeamMeetingBloc>().add(
                         ShowProjectBoardEvent(
@@ -56,7 +55,10 @@ class _BoardTabBarViewState extends State<BoardTabBarView> {
                         ),
                       );
                     },
-                    activeColor: AppColors.blueShade2,
+                    child: Radio<bool>(
+                      value: true,
+                      activeColor: AppColors.blueShade2,
+                    ),
                   ),
                   title: Text(sprint.label),
                   onTap: () {

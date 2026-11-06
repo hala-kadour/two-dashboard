@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_ce/hive.dart';
 import 'package:two_dashboard/config/constants/padding_config.dart';
 import 'package:two_dashboard/config/strings/text_strings.dart';
 import 'package:two_dashboard/config/theme/color.dart';
@@ -57,6 +57,8 @@ class _UpdateTaskFormState extends State<UpdateTaskForm> {
     );
 
     if (pickedDate == null) return;
+
+    if (!mounted) return;
 
     final TimeOfDay? pickedTime = await showTimePicker(
       context: context,
@@ -398,15 +400,17 @@ class _UpdateTaskFormState extends State<UpdateTaskForm> {
   Widget _buildRadioForPriority(String value, String label) {
     return Row(
       children: [
-        Radio<String>(
-          value: value,
+        RadioGroup<String>(
           groupValue: priority,
-          activeColor: AppColors.blueShade2,
           onChanged: (String? newValue) {
             setState(() {
               priority = newValue;
             });
           },
+          child: Radio<String>(
+            value: value,
+            activeColor: AppColors.blueShade2,
+          ),
         ),
         Text(label, style: AppTextStyle.bodySm()),
       ],
@@ -416,15 +420,17 @@ class _UpdateTaskFormState extends State<UpdateTaskForm> {
   Widget _buildRadioForStatusFromHive(ProjectStatus status) {
     return Row(
       children: [
-        Radio<int>(
-          value: status.id,
+        RadioGroup<int>(
           groupValue: statusId,
-          activeColor: AppColors.blueShade2,
           onChanged: (int? newValue) {
             setState(() {
               statusId = newValue;
             });
           },
+          child: Radio<int>(
+            value: status.id,
+            activeColor: AppColors.blueShade2,
+          ),
         ),
         Text(status.name, style: AppTextStyle.bodySm()),
       ],

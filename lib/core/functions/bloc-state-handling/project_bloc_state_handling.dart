@@ -120,9 +120,9 @@ class ProjectBlocStateHandling {
       for (int i = 0; i < state.allProjectsList.length; i++) {
         var project = state.allProjectsList[i];
         if (project.team != null) {
-          print("**********************************************");
-          print("Project Team ${project.team!.members.asMap()}");
-          print("**********************************************");
+          debugPrint("**********************************************");
+          debugPrint("Project Team ${project.team!.members.asMap()}");
+          debugPrint("**********************************************");
           cacheTeamForProject(project.id, project.team!);
         }
       }
@@ -212,9 +212,9 @@ class ProjectBlocStateHandling {
       });
     } else if (state.projectManagerRejectProjectStatus ==
         CasualStatus.failure) {
-      print("**************************");
-      print(state.message);
-      print("**************************");
+      debugPrint("**************************");
+      debugPrint(state.message);
+      debugPrint("**************************");
       context.pop();
       showErrorDialog(context, state.message);
     } else if (state.projectManagerRejectProjectStatus ==

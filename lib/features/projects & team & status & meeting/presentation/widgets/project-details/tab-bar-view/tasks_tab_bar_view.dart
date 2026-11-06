@@ -23,13 +23,11 @@ class _TasksTabBarViewState extends State<TasksTabBarView> {
   Widget _buildTaskRadio(int value, String label) {
     return Row(
       children: [
-        ValueListenableBuilder(
+        ValueListenableBuilder<int>(
           valueListenable: taskFilter,
           builder:
-              (_, v, _) => Radio<int>(
-                value: value,
-                groupValue: taskFilter.value,
-                activeColor: AppColors.blueShade2,
+              (_, currentValue, _) => RadioGroup<int>(
+                groupValue: currentValue,
                 onChanged: (int? newValue) {
                   taskFilter.value = newValue!;
                   if (newValue == 1) {
@@ -47,6 +45,10 @@ class _TasksTabBarViewState extends State<TasksTabBarView> {
                     );
                   }
                 },
+                child: Radio<int>(
+                  value: value,
+                  activeColor: AppColors.blueShade2,
+                ),
               ),
         ),
         Text(label, style: AppTextStyle.bodySm()),
@@ -57,13 +59,11 @@ class _TasksTabBarViewState extends State<TasksTabBarView> {
   Widget _buildProirityRadio(String value, String label) {
     return Row(
       children: [
-        ValueListenableBuilder(
+        ValueListenableBuilder<String>(
           valueListenable: proirityFilter,
           builder:
-              (_, v, _) => Radio<String>(
-                value: value,
-                groupValue: proirityFilter.value,
-                activeColor: AppColors.blueShade2,
+              (_, currentValue, _) => RadioGroup<String>(
+                groupValue: currentValue,
                 onChanged: (String? newValue) {
                   proirityFilter.value = newValue!;
                   context.read<SprintAndTaskBloc>().add(
@@ -73,6 +73,10 @@ class _TasksTabBarViewState extends State<TasksTabBarView> {
                     ),
                   );
                 },
+                child: Radio<String>(
+                  value: value,
+                  activeColor: AppColors.blueShade2,
+                ),
               ),
         ),
         Text(label, style: AppTextStyle.bodySm()),

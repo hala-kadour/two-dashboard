@@ -44,6 +44,8 @@ class _UpdateSprintFormState extends State<UpdateSprintForm> {
 
     if (pickedDate == null) return;
 
+    if (!mounted) return;
+
     final TimeOfDay? pickedTime = await showTimePicker(
       context: context,
       initialTime: TimeOfDay.fromDateTime(

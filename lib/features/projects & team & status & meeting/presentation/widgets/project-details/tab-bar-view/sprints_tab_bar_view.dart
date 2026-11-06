@@ -39,13 +39,11 @@ class _SprintsTabBarViewState extends State<SprintsTabBarView> {
   Widget _buildRadio(int value, String label) {
     return Row(
       children: [
-        ValueListenableBuilder(
+        ValueListenableBuilder<int>(
           valueListenable: filter,
           builder:
-              (_, vv, _) => Radio<int>(
-                value: value,
-                groupValue: filter.value,
-                activeColor: AppColors.blueShade2,
+              (_, currentValue, _) => RadioGroup<int>(
+                groupValue: currentValue,
                 onChanged: (int? newValue) {
                   filter.value = newValue!;
                   if (newValue == 1) {
@@ -69,6 +67,10 @@ class _SprintsTabBarViewState extends State<SprintsTabBarView> {
                     );
                   }
                 },
+                child: Radio<int>(
+                  value: value,
+                  activeColor: AppColors.blueShade2,
+                ),
               ),
         ),
         Text(label, style: AppTextStyle.bodySm()),

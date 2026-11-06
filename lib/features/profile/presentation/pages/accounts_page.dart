@@ -32,34 +32,36 @@ class _AccountsPageState extends State<AccountsPage> {
     return SizedBox(
       height: 200,
       child: SingleChildScrollView(
-        child: Column(
-          children:
-              roles.map((role) {
-                return ValueListenableBuilder<RoleModel>(
-                  valueListenable: selectedRole,
-                  builder: (_, selected, __) {
-                    return RadioListTile<RoleModel>(
-                      value: role,
-                      groupValue: selected,
-                      onChanged: (val) {
-                        if (val != null) {
-                          selectedRole.value = val;
-                          context.read<AuthRoleProfileBloc>().add(
-                            ShowUsersWithFilterEvent(
-                              approvedFilter: approved.value,
-                              roleFilter: val.id,
-                            ),
-                          );
-                        }
-                      },
-                      title: Text(role.role),
-                      activeColor: AppColors.blueShade2,
-                      controlAffinity: ListTileControlAffinity.leading,
-                      dense: true,
-                    );
-                  },
-                );
-              }).toList(),
+        child: ValueListenableBuilder<RoleModel>(
+          valueListenable: selectedRole,
+          builder: (_, selected, __) {
+            return RadioGroup<RoleModel>(
+              groupValue: selected,
+              onChanged: (val) {
+                if (val != null) {
+                  selectedRole.value = val;
+                  context.read<AuthRoleProfileBloc>().add(
+                    ShowUsersWithFilterEvent(
+                      approvedFilter: approved.value,
+                      roleFilter: val.id,
+                    ),
+                  );
+                }
+              },
+              child: Column(
+                children:
+                    roles.map((role) {
+                      return RadioListTile<RoleModel>(
+                        value: role,
+                        title: Text(role.role),
+                        activeColor: AppColors.blueShade2,
+                        controlAffinity: ListTileControlAffinity.leading,
+                        dense: true,
+                      );
+                    }).toList(),
+              ),
+            );
+          },
         ),
       ),
     );
@@ -67,36 +69,38 @@ class _AccountsPageState extends State<AccountsPage> {
 
   // Filter For Approvment
   Widget _buildApprovedFilterList(List<String> list) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children:
-          list.map((item) {
-            return ValueListenableBuilder<int>(
-              valueListenable: approved,
-              builder: (_, selected, __) {
-                final value = item == "Approved" ? 1 : 0;
-                return RadioListTile<int>(
-                  value: value,
-                  groupValue: selected,
-                  onChanged: (val) {
-                    if (val != null) {
-                      approved.value = val;
-                      context.read<AuthRoleProfileBloc>().add(
-                        ShowUsersWithFilterEvent(
-                          approvedFilter: val,
-                          roleFilter: selectedRole.value.id,
-                        ),
-                      );
-                    }
-                  },
-                  title: Text(item),
-                  activeColor: AppColors.blueShade2,
-                  controlAffinity: ListTileControlAffinity.leading,
-                  dense: true,
-                );
-              },
-            );
-          }).toList(),
+    return ValueListenableBuilder<int>(
+      valueListenable: approved,
+      builder: (_, selected, __) {
+        return RadioGroup<int>(
+          groupValue: selected,
+          onChanged: (val) {
+            if (val != null) {
+              approved.value = val;
+              context.read<AuthRoleProfileBloc>().add(
+                ShowUsersWithFilterEvent(
+                  approvedFilter: val,
+                  roleFilter: selectedRole.value.id,
+                ),
+              );
+            }
+          },
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children:
+                list.map((item) {
+                  final value = item == "Approved" ? 1 : 0;
+                  return RadioListTile<int>(
+                    value: value,
+                    title: Text(item),
+                    activeColor: AppColors.blueShade2,
+                    controlAffinity: ListTileControlAffinity.leading,
+                    dense: true,
+                  );
+                }).toList(),
+          ),
+        );
+      },
     );
   }
 

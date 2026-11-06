@@ -54,6 +54,7 @@ void showPostCardSideMenu(
       ),
     ],
   ).then((value) {
+    if (!context.mounted) return;
     if (value == 0) {
       context.read<PostBloc>().add(UnActivePostEvent(postId: post.postId));
     } else if (value == 1) {

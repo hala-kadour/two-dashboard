@@ -42,6 +42,7 @@ void showPendedProjectActionSideMenu(
       ),
     ],
   ).then((value) {
+    if (!context.mounted) return;
     if (value == 0) {
     } else if (value == 1) {
       context.pushNamed(

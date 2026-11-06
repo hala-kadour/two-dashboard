@@ -33,6 +33,7 @@ void showPendedProjectActionSideMenu(
       ),
     ],
   ).then((value) {
+    if (!context.mounted) return;
     if (value == 0) {
       context.pushReplacementNamed(
         AppRouteConfig.selectTeam,

@@ -8,7 +8,7 @@ part of 'project_sprint.dart';
 
 class ProjectSprintAdapter extends TypeAdapter<ProjectSprint> {
   @override
-  final int typeId = 4;
+  final typeId = 4;
 
   @override
   ProjectSprint read(BinaryReader reader) {
@@ -17,9 +17,9 @@ class ProjectSprintAdapter extends TypeAdapter<ProjectSprint> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return ProjectSprint(
-      id: fields[0] as int,
+      id: (fields[0] as num).toInt(),
       name: fields[1] as String,
-      projectId: fields[2] as int,
+      projectId: (fields[2] as num).toInt(),
     );
   }
 

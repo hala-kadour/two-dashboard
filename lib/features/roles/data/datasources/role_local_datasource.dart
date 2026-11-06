@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_ce/hive.dart';
 import 'package:two_dashboard/features/roles/data/models/role_response_model.dart';
 
 import '../../../../core/error/exceptions.dart';

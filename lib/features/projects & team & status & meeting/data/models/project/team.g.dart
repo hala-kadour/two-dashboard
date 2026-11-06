@@ -8,7 +8,7 @@ part of 'team.dart';
 
 class TeamAdapter extends TypeAdapter<Team> {
   @override
-  final int typeId = 2;
+  final typeId = 2;
 
   @override
   Team read(BinaryReader reader) {
@@ -17,7 +17,7 @@ class TeamAdapter extends TypeAdapter<Team> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Team(
-      id: fields[0] as int,
+      id: (fields[0] as num).toInt(),
       name: fields[1] as String,
       members: (fields[2] as List).cast<Member>(),
     );
@@ -48,7 +48,7 @@ class TeamAdapter extends TypeAdapter<Team> {
 
 class MemberAdapter extends TypeAdapter<Member> {
   @override
-  final int typeId = 3;
+  final typeId = 3;
 
   @override
   Member read(BinaryReader reader) {
@@ -57,7 +57,7 @@ class MemberAdapter extends TypeAdapter<Member> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Member(
-      id: fields[0] as int,
+      id: (fields[0] as num).toInt(),
       name: fields[1] as String,
       email: fields[2] as String,
       phone: fields[3] as String,

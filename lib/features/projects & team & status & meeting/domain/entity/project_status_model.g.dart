@@ -8,7 +8,7 @@ part of 'project_status_model.dart';
 
 class ProjectStatusAdapter extends TypeAdapter<ProjectStatus> {
   @override
-  final int typeId = 0;
+  final typeId = 0;
 
   @override
   ProjectStatus read(BinaryReader reader) {
@@ -17,9 +17,9 @@ class ProjectStatusAdapter extends TypeAdapter<ProjectStatus> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return ProjectStatus(
-      id: fields[0] as int,
+      id: (fields[0] as num).toInt(),
       name: fields[1] as String,
-      projectId: fields[2] as int,
+      projectId: (fields[2] as num).toInt(),
     );
   }
 

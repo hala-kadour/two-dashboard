@@ -102,7 +102,7 @@ class _SelectTeamPageState extends State<SelectTeamPage> {
                 if (state.showTeamsStatus == CasualStatus.loading) {
                   return Center(child: LoadingStatusAnimation());
                 } else if (state.showTeamsStatus == CasualStatus.success) {
-                  print(state.showTeams[0].membersList);
+                  debugPrint(state.showTeams[0].membersList.toString());
                   if (state.showTeams.isEmpty) {
                     return Center(child: EmptyStatusAnimation());
                   } else {

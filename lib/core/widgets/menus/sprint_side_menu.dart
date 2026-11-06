@@ -46,6 +46,7 @@ void showSprintCardSideMenu(
       ),
     ],
   ).then((value) {
+    if (!context.mounted) return;
     if (value == 0) {
       context.pushNamed(
         AppRouteConfig.updateSprint,

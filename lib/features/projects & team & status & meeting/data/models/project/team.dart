@@ -1,4 +1,4 @@
-import 'package:hive/hive.dart';
+import 'package:hive_ce/hive.dart';
 import 'package:two_dashboard/core/error/exceptions.dart';
 
 part 'team.g.dart';

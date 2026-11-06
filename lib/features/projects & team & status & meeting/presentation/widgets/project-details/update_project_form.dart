@@ -254,15 +254,17 @@ class _UpdateProjectFormState extends State<UpdateProjectForm> {
   Widget _buildRadioForProjectType(ProjectType value, String label) {
     return Row(
       children: [
-        Radio<ProjectType>(
-          value: value,
+        RadioGroup<ProjectType>(
           groupValue: projectType,
-          activeColor: AppColors.blueShade2,
           onChanged: (ProjectType? newValue) {
             setState(() {
               projectType = newValue;
             });
           },
+          child: Radio<ProjectType>(
+            value: value,
+            activeColor: AppColors.blueShade2,
+          ),
         ),
         Text(label, style: AppTextStyle.bodySm()),
       ],
@@ -273,15 +275,17 @@ class _UpdateProjectFormState extends State<UpdateProjectForm> {
   Widget _buildRadioForCoopertion(CooperationType value, String label) {
     return Row(
       children: [
-        Radio<CooperationType>(
-          value: value,
+        RadioGroup<CooperationType>(
           groupValue: cooperationType,
-          activeColor: AppColors.blueShade2,
           onChanged: (CooperationType? newValue) {
             setState(() {
               cooperationType = newValue;
             });
           },
+          child: Radio<CooperationType>(
+            value: value,
+            activeColor: AppColors.blueShade2,
+          ),
         ),
         Text(label, style: AppTextStyle.bodySm()),
       ],
@@ -292,15 +296,17 @@ class _UpdateProjectFormState extends State<UpdateProjectForm> {
   Widget _buildRadioForVisibilty(ProjectVisibility value, String label) {
     return Row(
       children: [
-        Radio<ProjectVisibility>(
-          value: value,
+        RadioGroup<ProjectVisibility>(
           groupValue: visibility,
-          activeColor: AppColors.blueShade2,
           onChanged: (ProjectVisibility? newValue) {
             setState(() {
               visibility = newValue;
             });
           },
+          child: Radio<ProjectVisibility>(
+            value: value,
+            activeColor: AppColors.blueShade2,
+          ),
         ),
         Text(label, style: AppTextStyle.bodySm()),
       ],

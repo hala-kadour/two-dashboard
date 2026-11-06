@@ -29,7 +29,7 @@ class _FillEmployeeProfileBodyState extends State<FillEmployeeProfileBody> {
   RoleModel? role;
   String? imageB64;
   String? cvB64;
-  TextEditingController _phoneNumberController = TextEditingController();
+  final TextEditingController _phoneNumberController = TextEditingController();
 
   void updateImageBytes(String? base64) {
     setState(() {

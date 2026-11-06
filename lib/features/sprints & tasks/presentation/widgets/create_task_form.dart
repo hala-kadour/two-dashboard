@@ -91,7 +91,7 @@ class _CreateTaskFormState extends State<CreateTaskForm> {
 
   Future<void> _loadStatuses() async {
     final allStatuses = getcachedStatusesForProject(widget.projectId);
-    print(allStatuses.asMap());
+    debugPrint(allStatuses.asMap().toString());
     setState(() {
       _statusList = allStatuses;
     });
@@ -99,11 +99,11 @@ class _CreateTaskFormState extends State<CreateTaskForm> {
 
   Future<void> _loadMembers() async {
     final allMembers = await getCachedTeamForProject(widget.projectId);
-    print("**************************");
-    print("GET CACHED TEAM FROM ${widget.projectId}");
-    print("**************************");
-    print(allMembers?.members);
-    print("**************************");
+    debugPrint("**************************");
+    debugPrint("GET CACHED TEAM FROM ${widget.projectId}");
+    debugPrint("**************************");
+    debugPrint(allMembers?.members.toString());
+    debugPrint("**************************");
     setState(() {
       _membersList = allMembers!.members;
     });
@@ -394,15 +394,17 @@ class _CreateTaskFormState extends State<CreateTaskForm> {
   Widget _buildRadioForPriority(String value, String label) {
     return Row(
       children: [
-        Radio<String>(
-          value: value,
+        RadioGroup<String>(
           groupValue: priority,
-          activeColor: AppColors.greenShade2,
           onChanged: (String? newValue) {
             setState(() {
               priority = newValue;
             });
           },
+          child: Radio<String>(
+            value: value,
+            activeColor: AppColors.greenShade2,
+          ),
         ),
         Text(label, style: AppTextStyle.bodySm()),
       ],
@@ -412,15 +414,17 @@ class _CreateTaskFormState extends State<CreateTaskForm> {
   Widget _buildRadioForStatusFromHive(ProjectStatus status) {
     return Row(
       children: [
-        Radio<int>(
-          value: status.id,
+        RadioGroup<int>(
           groupValue: statusId,
-          activeColor: AppColors.greenShade2,
           onChanged: (int? newValue) {
             setState(() {
               statusId = newValue;
             });
           },
+          child: Radio<int>(
+            value: status.id,
+            activeColor: AppColors.greenShade2,
+          ),
         ),
         Text(status.name, style: AppTextStyle.bodySm()),
       ],
